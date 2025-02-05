@@ -30,7 +30,7 @@ export function WordCard({ word, isLearned, onToggleLearned }: WordCardProps) {
         <CardContent className="p-6">
           <div className={`${isFlipped ? "hidden" : "block"}`}>
             <h2 className="text-3xl font-bold mb-2">{word.greek}</h2>
-            <p className="text-muted-foreground">{word.phonetic}</p>
+            <p className="text-muted-foreground mb-4">/{word.phonetic}/</p>
           </div>
           <div className={`${isFlipped ? "block" : "hidden"}`}>
             <h3 className="text-xl font-semibold mb-2">{word.english}</h3>
