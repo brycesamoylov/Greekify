@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { Word } from "@shared/schema";
 import { WordCard } from "@/components/WordCard";
 import { FlashcardView } from "@/components/FlashcardView";
@@ -8,6 +8,7 @@ import { getProgress, toggleWordProgress, getProgressPercentage } from "@/lib/pr
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { List, LayoutGrid } from "lucide-react";
+import { queryClient } from "@/lib/queryClient";
 
 type ViewMode = "list" | "flashcard";
 
@@ -16,6 +17,16 @@ export default function Home() {
 
   const { data: words, isLoading } = useQuery<Word[]>({
     queryKey: ["/api/words"],
+  });
+
+  const { mutate: updateProgress } = useMutation({
+    mutationFn: toggleWordProgress,
+    onSuccess: () => {
+      // Invalidate and refetch progress
+      queryClient.invalidateQueries({ queryKey: ["/api/progress"] });
+      // Force a re-render since we're using localStorage
+      setViewMode(current => current);
+    },
   });
 
   const progress = getProgress();
@@ -62,7 +73,7 @@ export default function Home() {
                   key={word.id}
                   word={word}
                   isLearned={progress.has(word.id)}
-                  onToggleLearned={() => toggleWordProgress(word.id)}
+                  onToggleLearned={() => updateProgress(word.id)}
                 />
               ))}
             </div>
@@ -71,7 +82,7 @@ export default function Home() {
           <FlashcardView
             words={words}
             progress={progress}
-            onToggleLearned={toggleWordProgress}
+            onToggleLearned={updateProgress}
           />
         )}
       </div>
