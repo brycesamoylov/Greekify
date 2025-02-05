@@ -20,6 +20,7 @@ export default function Home() {
 
   const { data: words, isLoading } = useQuery<Word[]>({
     queryKey: ["/api/words", lesson],
+    queryFn: () => fetch(`/api/words?lesson=${lesson}`).then(res => res.json())
   });
 
   const { mutate: updateProgress } = useMutation({
