@@ -3,9 +3,10 @@ import { createServer } from "http";
 import { storage } from "./storage";
 
 export function registerRoutes(app: Express) {
-  app.get("/api/words", async (_req, res) => {
-    const words = await storage.getAllWords();
-    res.json(words);
+  app.get("/api/words", async (req, res) => {
+    const lesson = req.query.lesson || 'basic';
+    const words = lesson === 'basic' ? greekWords : travelWords;
+    res.json(words.map((word, index) => ({ ...word, id: index + 1 })));
   });
 
   app.get("/api/progress", async (_req, res) => {

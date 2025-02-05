@@ -12,11 +12,14 @@ import { queryClient } from "@/lib/queryClient";
 
 type ViewMode = "list" | "flashcard";
 
+type Lesson = "basic" | "travel";
+
 export default function Home() {
   const [viewMode, setViewMode] = useState<ViewMode>("list");
+  const [lesson, setLesson] = useState<Lesson>("basic");
 
   const { data: words, isLoading } = useQuery<Word[]>({
-    queryKey: ["/api/words"],
+    queryKey: ["/api/words", lesson],
   });
 
   const { mutate: updateProgress } = useMutation({
@@ -42,9 +45,24 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background p-4">
       <div className="max-w-2xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          Learn Greek: Top 100 Words
+        <h1 className="text-3xl font-bold text-center mb-4">
+          Learn Greek: {lesson === "basic" ? "Top 100 Words" : "Travel Words"}
         </h1>
+        
+        <div className="flex justify-center gap-2 mb-4">
+          <Button
+            variant={lesson === "basic" ? "default" : "outline"}
+            onClick={() => setLesson("basic")}
+          >
+            Basic Words
+          </Button>
+          <Button
+            variant={lesson === "travel" ? "default" : "outline"}
+            onClick={() => setLesson("travel")}
+          >
+            Travel Words
+          </Button>
+        </div>
 
         <ProgressBar value={getProgressPercentage(words.length)} />
 

@@ -22,6 +22,11 @@ export class MemStorage implements IStorage {
         this.words.set(index + 1, { id: index + 1, ...word });
       });
     });
+    import("../client/src/lib/travel-words").then(({ travelWords }) => {
+      travelWords.forEach((word, index) => {
+        this.words.set(this.words.size + 1, { id: this.words.size + 1, ...word });
+      });
+    });
   }
 
   async getAllWords(): Promise<Word[]> {
