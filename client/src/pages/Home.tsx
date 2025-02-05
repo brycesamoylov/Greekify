@@ -12,7 +12,7 @@ import { queryClient } from "@/lib/queryClient";
 
 type ViewMode = "list" | "flashcard";
 
-type Lesson = "basic" | "travel";
+type Lesson = "basic" | "travel" | "greetings";
 
 export default function Home() {
   const [viewMode, setViewMode] = useState<ViewMode>("list");
@@ -47,7 +47,7 @@ export default function Home() {
     <div className="min-h-screen bg-background p-4">
       <div className="max-w-2xl mx-auto space-y-6">
         <h1 className="text-3xl font-bold text-center mb-4">
-          Learn Greek: {lesson === "basic" ? "Top 100 Words" : "Travel Words"}
+          Learn Greek: {lesson === "basic" ? "Top 100 Words" : lesson === "travel" ? "Travel Words" : "Greetings"}
         </h1>
         
         <div className="flex justify-center gap-2 mb-4">
@@ -62,6 +62,12 @@ export default function Home() {
             onClick={() => setLesson("travel")}
           >
             Travel Words
+          </Button>
+          <Button
+            variant={lesson === "greetings" ? "default" : "outline"}
+            onClick={() => setLesson("greetings")}
+          >
+            Greetings
           </Button>
         </div>
 
