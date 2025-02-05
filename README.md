@@ -1,7 +1,8 @@
 # Greek Vocabulary Master
 
 A modern web application for learning essential Greek vocabulary. Built with React, TypeScript, and Tailwind CSS.
-Hosted here: [Greekify](https://greekify2.vercel.app/)
+
+**Hosted here:** [Greekify](https://greekify2.vercel.app/)
 ## Features
 
 ### Word Lists
