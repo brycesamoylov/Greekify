@@ -1,6 +1,8 @@
 import type { Express } from "express";
 import { createServer } from "http";
 import { storage } from "./storage";
+import { greekWords } from "../client/src/lib/words";
+import { travelWords } from "../client/src/lib/travel-words";
 
 export function registerRoutes(app: Express) {
   app.get("/api/words", async (req, res) => {
