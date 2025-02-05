@@ -30,11 +30,12 @@ export function WordCard({ word, isLearned, onToggleLearned }: WordCardProps) {
         <CardContent className="p-6">
           <div className={`${isFlipped ? "hidden" : "block"}`}>
             <h2 className="text-3xl font-bold mb-4">{word.greek}</h2>
-            <h3 className="text-xl text-muted-foreground mb-2">{word.english}</h3>
-            <p className="text-sm text-muted-foreground">{word.phonetic}</p>
+            <p className="text-xl text-muted-foreground mb-2">{word.phonetic}</p>
+            <p className="text-lg text-muted-foreground">{word.english}</p>
           </div>
           <div className={`${isFlipped ? "block" : "hidden"}`}>
-            <p className="text-lg mb-4">{word.mnemonic}</p>
+            <h3 className="text-xl font-bold mb-4">Definition: {word.english}</h3>
+            <p className="text-lg mb-4">Memory Helper: {word.mnemonic}</p>
           </div>
           <div className="mt-4 flex justify-between items-center">
             <Badge variant={isLearned ? "default" : "outline"}>
