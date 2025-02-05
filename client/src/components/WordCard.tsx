@@ -41,7 +41,7 @@ export function WordCard({ word, isLearned, onToggleLearned }: WordCardProps) {
               {isLearned ? (
                 <Check className="w-4 h-4 mr-1" />
               ) : null}
-              {isLearned ? "Learned" : "To Learn"}
+              {isLearned ? "Learned" : "Not Learned"}
             </Badge>
             <Button
               variant="ghost"
