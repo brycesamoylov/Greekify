@@ -1,376 +1,374 @@
-
 export const greekWords = [
   {
     greek: "και",
     english: "and",
     phonetic: "kay",
-    mnemonic: "Think 'okay AND then'"
+    mnemonic: "It's okay AND then some"
   },
   {
     greek: "είναι",
     english: "is",
     phonetic: "ee-nay",
-    mnemonic: "Think 'The answer IS nay'"
+    mnemonic: "A horse says 'neigh', and that IS a fact"
   },
   {
     greek: "να",
     english: "to",
     phonetic: "na",
-    mnemonic: "Think 'TO nah'"
+    mnemonic: "I'm gonna TO go (na go)"
   },
   {
     greek: "το",
     english: "the",
     phonetic: "to",
-    mnemonic: "Think 'THE toe'"
+    mnemonic: "Point TO THE thing"
   },
   {
     greek: "δεν",
     english: "not",
     phonetic: "then",
-    mnemonic: "Think 'NOT then'"
+    mnemonic: "If NOT now, THEN when?"
   },
   {
     greek: "που",
     english: "that/where",
     phonetic: "poo",
-    mnemonic: "Think 'THAT poo'"
+    mnemonic: "Winnie the Pooh knows WHERE the honey is"
   },
   {
     greek: "θα",
     english: "will",
     phonetic: "tha",
-    mnemonic: "Think 'WILL tha'"
+    mnemonic: "Think 'tha WILL be done'"
   },
   {
     greek: "με",
     english: "with/me",
     phonetic: "me",
-    mnemonic: "Same as English 'ME'"
+    mnemonic: "Come WITH ME (same as English!)"
   },
   {
     greek: "από",
     english: "from",
     phonetic: "apo",
-    mnemonic: "Think 'FROM apollo'"
+    mnemonic: "Apollo came FROM Mount Olympus"
   },
   {
     greek: "τι",
     english: "what",
     phonetic: "ti",
-    mnemonic: "Think 'WHAT tea'"
+    mnemonic: "WHAT tea would you like?"
   },
   {
     greek: "για",
     english: "for",
     phonetic: "yah",
-    mnemonic: "Think 'FOR yah'"
+    mnemonic: "Yah, this is FOR you!"
   },
   {
     greek: "σε",
     english: "in/at",
     phonetic: "se",
-    mnemonic: "Think 'IN sea'"
+    mnemonic: "I'm AT SEA in this boat"
   },
   {
     greek: "αυτό",
     english: "this",
     phonetic: "af-to",
-    mnemonic: "Think 'THIS auto'"
+    mnemonic: "THIS auto is mine"
   },
   {
     greek: "έχω",
     english: "have",
     phonetic: "eh-ho",
-    mnemonic: "Think 'HAVE echo'"
+    mnemonic: "Eh, ho! I HAVE found it!"
   },
   {
     greek: "μου",
     english: "my",
     phonetic: "moo",
-    mnemonic: "Think 'MY moo'"
+    mnemonic: "That's MY cow that says moo"
   },
   {
     greek: "στο",
     english: "to the",
     phonetic: "sto",
-    mnemonic: "Think 'TO THE store'"
+    mnemonic: "Go TO THE store (sto-re)"
   },
   {
     greek: "πως",
     english: "how",
     phonetic: "pos",
-    mnemonic: "Think 'HOW pose'"
+    mnemonic: "HOW possible is it?"
   },
   {
     greek: "έτσι",
     english: "so/thus",
     phonetic: "et-si",
-    mnemonic: "Think 'SO etsy'"
+    mnemonic: "Et cetera, SO on and SO forth"
   },
   {
     greek: "πολύ",
     english: "very/much",
     phonetic: "po-lee",
-    mnemonic: "Think 'VERY poly'"
+    mnemonic: "I'm VERY poly-talented"
   },
   {
     greek: "κάτι",
     english: "something",
     phonetic: "ka-ti",
-    mnemonic: "Think 'SOMETHING catty'"
+    mnemonic: "The cat is SOMETHING special"
   },
   {
     greek: "σου",
     english: "your",
     phonetic: "soo",
-    mnemonic: "Think 'YOUR soup'"
+    mnemonic: "Soon, YOUR soup will be ready"
   },
   {
     greek: "τον",
     english: "the (masculine)",
     phonetic: "ton",
-    mnemonic: "Think 'THE ton'"
+    mnemonic: "THE TON of bricks is masculine"
   },
   {
     greek: "μας",
     english: "our/us",
     phonetic: "mas",
-    mnemonic: "Think 'US mass'"
+    mnemonic: "The mass of US together"
   },
   {
     greek: "τη",
     english: "the (feminine)",
     phonetic: "ti",
-    mnemonic: "Think 'THE tea'"
+    mnemonic: "THE tea party is feminine"
   },
   {
     greek: "πολλά",
     english: "many",
     phonetic: "po-la",
-    mnemonic: "Think 'MANY polar'"
+    mnemonic: "MANY polar bears"
   },
   {
     greek: "τώρα",
     english: "now",
     phonetic: "to-ra",
-    mnemonic: "Think 'NOW torah'"
+    mnemonic: "NOW or never, Torah says"
   },
   {
     greek: "κάνω",
     english: "do/make",
     phonetic: "ka-no",
-    mnemonic: "Think 'DO canoe'"
+    mnemonic: "Can you DO it? Yes, I can-do!"
   },
   {
     greek: "μία",
     english: "one (feminine)",
     phonetic: "mia",
-    mnemonic: "Think 'ONE mia'"
+    mnemonic: "Mamma mia! ONE lady"
   },
   {
     greek: "εδώ",
     english: "here",
     phonetic: "e-tho",
-    mnemonic: "Think 'HERE edo'"
+    mnemonic: "Ed is over HERE, though"
   },
   {
     greek: "ήταν",
     english: "was",
     phonetic: "ee-tan",
-    mnemonic: "Think 'WAS titan'"
+    mnemonic: "The titan WAS here"
   },
   {
     greek: "πάρα",
     english: "very",
     phonetic: "pa-ra",
-    mnemonic: "Think 'VERY para'"
+    mnemonic: "The parade is VERY long"
   },
   {
     greek: "όλα",
     english: "all",
     phonetic: "o-la",
-    mnemonic: "Think 'ALL hola'"
+    mnemonic: "ALL of us say 'ola!'"
   },
   {
     greek: "σας",
     english: "your (plural)",
     phonetic: "sas",
-    mnemonic: "Think 'YOUR sass'"
+    mnemonic: "YOUR sassy group"
   },
   {
     greek: "αυτά",
     english: "these",
     phonetic: "af-ta",
-    mnemonic: "Think 'THESE autos'"
+    mnemonic: "THESE autos are nice"
   },
   {
     greek: "μη",
     english: "not/don't",
     phonetic: "mi",
-    mnemonic: "Think 'NOT me'"
+    mnemonic: "DON'T look at me like that"
   },
   {
     greek: "ένα",
     english: "one/a",
     phonetic: "e-na",
-    mnemonic: "Think 'ONE ena'"
+    mnemonic: "ONE na more time!"
   },
   {
     greek: "όταν",
     english: "when",
     phonetic: "o-tan",
-    mnemonic: "Think 'WHEN otan'"
+    mnemonic: "Oh, WHEN will I get a tan?"
   },
   {
     greek: "έχει",
     english: "has",
     phonetic: "e-hi",
-    mnemonic: "Think 'HAS echo'"
+    mnemonic: "He HAS echoed hi!"
   },
   {
     greek: "γιατί",
     english: "why",
     phonetic: "ya-ti",
-    mnemonic: "Think 'WHY yachty'"
+    mnemonic: "Ya, WHY drink tea?"
   },
   {
     greek: "τους",
     english: "them",
     phonetic: "toos",
-    mnemonic: "Think 'THEM tooth'"
+    mnemonic: "Look at THEM with their toothy smiles"
   },
   {
     greek: "μέσα",
     english: "inside",
     phonetic: "me-sa",
-    mnemonic: "Think 'INSIDE mesa'"
+    mnemonic: "The message is INSIDE the mesa"
   },
   {
     greek: "πάλι",
     english: "again",
     phonetic: "pa-li",
-    mnemonic: "Think 'AGAIN pally'"
+    mnemonic: "My pal is here AGAIN"
   },
   {
     greek: "λίγο",
     english: "little",
     phonetic: "li-go",
-    mnemonic: "Think 'LITTLE lego'"
+    mnemonic: "LITTLE lego pieces"
   },
   {
     greek: "πάνω",
     english: "up/on",
     phonetic: "pa-no",
-    mnemonic: "Think 'UP piano'"
+    mnemonic: "UP ON the piano"
   },
   {
     greek: "κάθε",
     english: "every",
     phonetic: "ka-the",
-    mnemonic: "Think 'EVERY cathay'"
+    mnemonic: "EVERY cat there is"
   },
   {
     greek: "χωρίς",
     english: "without",
     phonetic: "ho-ris",
-    mnemonic: "Think 'WITHOUT chorus'"
+    mnemonic: "The horse is WITHOUT its rider"
   },
   {
     greek: "πριν",
     english: "before",
     phonetic: "prin",
-    mnemonic: "Think 'BEFORE print'"
+    mnemonic: "Print this BEFORE that"
   },
   {
     greek: "μετά",
     english: "after",
     phonetic: "me-ta",
-    mnemonic: "Think 'AFTER meta'"
+    mnemonic: "Meet me AFTER at the meta"
   },
   {
     greek: "πήγα",
     english: "went",
     phonetic: "pi-ga",
-    mnemonic: "Think 'WENT pega'"
+    mnemonic: "Piggy WENT to market"
   },
   {
     greek: "καλά",
     english: "good/well",
     phonetic: "ka-la",
-    mnemonic: "Think 'GOOD koala'"
+    mnemonic: "The koala is doing WELL"
   },
   {
     greek: "μόνο",
     english: "only",
     phonetic: "mo-no",
-    mnemonic: "Think 'ONLY mono'"
+    mnemonic: "ONLY mono, nothing stereo"
   },
   {
     greek: "πει",
     english: "say",
     phonetic: "pi",
-    mnemonic: "Think 'SAY pay'"
+    mnemonic: "SAY 'pi' like a mathematician"
   },
   {
     greek: "μαζί",
     english: "together",
     phonetic: "ma-zi",
-    mnemonic: "Think 'TOGETHER mazzy'"
+    mnemonic: "Let's maze TOGETHER, Ziggy"
   },
   {
     greek: "άλλα",
     english: "other",
     phonetic: "a-la",
-    mnemonic: "Think 'OTHER alla'"
+    mnemonic: "A la carte means ORDER OTHER things"
   },
   {
     greek: "αν",
     english: "if",
     phonetic: "an",
-    mnemonic: "Think 'IF an'"
+    mnemonic: "IF and when it happens"
   },
   {
     greek: "ξέρω",
     english: "know",
     phonetic: "kse-ro",
-    mnemonic: "Think 'KNOW zero'"
+    mnemonic: "Xerox KNOWS how to copy"
   },
   {
     greek: "κανείς",
     english: "nobody",
     phonetic: "ka-nis",
-    mnemonic: "Think 'NOBODY can'"
+    mnemonic: "NOBODY can miss this"
   },
   {
     greek: "δύο",
     english: "two",
     phonetic: "thi-o",
-    mnemonic: "Think 'TWO duo'"
+    mnemonic: "TWO duo performers"
   },
   {
     greek: "τότε",
     english: "then",
-    phonetic: "to-te",
-    mnemonic: "Think 'THEN tote'"
+    mnemonic: "Think tote bag for THEN"
   },
   {
     greek: "εσύ",
     english: "you",
     phonetic: "e-si",
-    mnemonic: "Think 'YOU essay'"
+    mnemonic: "Easy for YOU to say"
   },
   {
     greek: "πάω",
     english: "go",
     phonetic: "pa-o",
-    mnemonic: "Think 'GO pow'"
+    mnemonic: "Pa said GO now"
   },
   {
     greek: "πιο",
     english: "more",
     phonetic: "pyo",
-    mnemonic: "Think 'MORE pio'"
+    mnemonic: "Please give me MORE pie, oh!"
   },
   {
     greek: "κάποια",
