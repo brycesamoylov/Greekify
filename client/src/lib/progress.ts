@@ -6,23 +6,17 @@ export function getProgress(): Set<number> {
   return new Set(saved ? JSON.parse(saved) : []);
 }
 
-export async function toggleWordProgress(wordId: number) {
+export function toggleWordProgress(wordId: number): void {
   const progress = getProgress();
   const isLearned = !progress.has(wordId);
 
-  // Update local storage
   if (isLearned) {
     progress.add(wordId);
   } else {
     progress.delete(wordId);
   }
+  
   localStorage.setItem("learned-words", JSON.stringify(Array.from(progress)));
-
-  // Update server
-  await apiRequest("POST", "/api/progress", {
-    wordId,
-    learned: isLearned
-  });
 }
 
 export function getProgressPercentage(total: number): number {

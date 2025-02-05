@@ -1,47 +1,55 @@
-import { useState } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { Word } from "@shared/schema";
+import { useState, useCallback, useMemo } from "react";
 import { WordCard } from "@/components/WordCard";
 import { FlashcardView } from "@/components/FlashcardView";
 import { ProgressBar } from "@/components/ProgressBar";
 import { getProgress, toggleWordProgress, getProgressPercentage } from "@/lib/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { List, LayoutGrid } from "lucide-react";
-import { queryClient } from "@/lib/queryClient";
+import { List, LayoutGrid, Search } from "lucide-react";
+import { greekWords, travelWords, greetingsWords, Word } from "../lib/word-lists";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 
 type ViewMode = "list" | "flashcard";
-
 type Lesson = "basic" | "travel" | "greetings";
+
+interface WordWithId extends Word {
+  id: number;
+  category: Lesson;
+}
 
 export default function Home() {
   const [viewMode, setViewMode] = useState<ViewMode>("list");
   const [lesson, setLesson] = useState<Lesson>("basic");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [progressState, setProgressState] = useState(() => getProgress());
 
-  const { data: words, isLoading } = useQuery<Word[]>({
-    queryKey: ["/api/words", lesson],
-    queryFn: () => fetch(`/api/words?lesson=${lesson}`).then(res => res.json())
-  });
+  // Create a combined list of all words with their categories
+  const allWords: WordWithId[] = useMemo(() => {
+    let id = 1;
+    return [
+      ...greekWords.map(word => ({ ...word, id: id++, category: 'basic' as Lesson })),
+      ...travelWords.map(word => ({ ...word, id: id++, category: 'travel' as Lesson })),
+      ...greetingsWords.map(word => ({ ...word, id: id++, category: 'greetings' as Lesson }))
+    ];
+  }, []);
 
-  const { mutate: updateProgress } = useMutation({
-    mutationFn: toggleWordProgress,
-    onSuccess: () => {
-      // Invalidate and refetch progress
-      queryClient.invalidateQueries({ queryKey: ["/api/progress"] });
-      // Force a re-render since we're using localStorage
-      setViewMode(current => current);
-    },
-  });
+  // Get words based on current lesson and search query
+  const words = useMemo(() => {
+    let filteredWords = searchQuery
+      ? allWords.filter(word =>
+          word.english.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          word.greek.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : allWords.filter(word => word.category === lesson);
 
-  const progress = getProgress();
+    return filteredWords;
+  }, [lesson, searchQuery, allWords]);
 
-  if (isLoading || !words) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
+  const handleToggleProgress = useCallback(async (wordId: number) => {
+    await toggleWordProgress(wordId);
+    setProgressState(getProgress());
+  }, []);
 
   return (
     <div className="min-h-screen bg-background p-4">
@@ -71,7 +79,18 @@ export default function Home() {
           </Button>
         </div>
 
-        <ProgressBar value={getProgressPercentage(words.length)} />
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <Input
+            type="text"
+            placeholder="Search all words in English or Greek..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+
+        <ProgressBar value={getProgressPercentage(allWords.length)} />
 
         <div className="flex justify-end gap-2 mb-4">
           <Button
@@ -93,21 +112,38 @@ export default function Home() {
         {viewMode === "list" ? (
           <ScrollArea className="h-[calc(100vh-250px)]">
             <div className="grid gap-4">
-              {words.map((word) => (
-                <WordCard
-                  key={word.id}
-                  word={word}
-                  isLearned={progress.has(word.id)}
-                  onToggleLearned={() => updateProgress(word.id)}
-                />
-              ))}
+              {words.length > 0 ? (
+                words.map((word: WordWithId) => (
+                  <div key={word.id} className="relative">
+                    {searchQuery && (
+                      <Badge 
+                        variant="secondary" 
+                        className="absolute -top-2 -right-2 z-10"
+                      >
+                        {word.category === 'basic' ? 'Basic' : 
+                         word.category === 'travel' ? 'Travel' : 
+                         'Greetings'}
+                      </Badge>
+                    )}
+                    <WordCard
+                      word={word}
+                      isLearned={progressState.has(word.id)}
+                      onToggleLearned={() => handleToggleProgress(word.id)}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="text-center text-muted-foreground py-8">
+                  No words found matching "{searchQuery}"
+                </div>
+              )}
             </div>
           </ScrollArea>
         ) : (
           <FlashcardView
             words={words}
-            progress={progress}
-            onToggleLearned={updateProgress}
+            progress={progressState}
+            onToggleLearned={handleToggleProgress}
           />
         )}
       </div>
